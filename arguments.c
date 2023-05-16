@@ -3,6 +3,14 @@
 #include <string.h>
 #include "shell.h"
 
+
+/**
+ * parse_arguments - takes the command line and parses it
+ * into an array of arguments.
+ * @line: param command line.
+ * Return: return array of arguments.
+ */
+
 char **parse_arguments(char *line)
 {
 	char **arguments = NULL;
@@ -32,6 +40,13 @@ char **parse_arguments(char *line)
 
 	return (arguments);
 }
+
+/**
+ * free_arguments - frees the memory allocated for
+ * the array of arguments.
+ * @arguments: param of array of arguments.
+ * Return: no return.
+ */
 
 void free_arguments(char **arguments)
 {
