@@ -8,9 +8,9 @@
 
 typedef struct alias_s
 {
-    char *name;
-    char *value;
-    struct alias_s *next;
+	char *name;
+	char *value;
+	struct alias_s *next;
 } alias_t;
 
 void print_alias(alias_t *alias_list);
