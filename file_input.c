@@ -3,21 +3,30 @@
 #include <string.h>
 #include "shell.h"
 
-#define BUFFER_SIZE 1024
+/**
+ * execute_commands_from_file - execute commands from a file
+ * in the shell.
+ * @filename: name of the file.
+ * Return: no return.
+ */
 
 void execute_commands_from_file(const char *filename)
 {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("Error opening file: %s\n", filename);
-        return;
-    }
+	FILE *file = fopen(filename, "r");
 
-    char line[BUFFER_SIZE];
-    while (fgets(line, BUFFER_SIZE, file) != NULL) {
-        line[strcspn(line, "\n")] = '\0'; // Remove trailing newline
-        execute_command(line);
-    }
+	if (file == NULL)
+	{
+		printf("Error opening file: %s\n", filename);
+		return;
+	}
 
-    fclose(file);
+	char line[BUFFER_SIZE];
+
+	while (fgets(line, BUFFER_SIZE, file) != NULL)
+	{
+		line[strcspn(line, "\n")] = '\0';
+		execute_command(line);
+	}
+
+	fclose(file);
 }

@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define BUFFER_SIZE 1024
+
 typedef struct alias_s
 {
 	char *name;
