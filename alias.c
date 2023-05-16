@@ -32,7 +32,7 @@ int add_alias(alias_t **alias_list, const char *name, const char *value)
 	if (new_alias == NULL)
 	{
 		perror("malloc");
-		return -1;
+		return (-1);
 	}
 
 	new_alias->name = strdup(name);
@@ -40,7 +40,7 @@ int add_alias(alias_t **alias_list, const char *name, const char *value)
 	{
 		perror("strdup");
 		free(new_alias);
-		return -1;
+		return (-1);
 	}
 
 	new_alias->value = strdup(value);
@@ -49,13 +49,13 @@ int add_alias(alias_t **alias_list, const char *name, const char *value)
 		perror("strdup");
 		free(new_alias->name);
 		free(new_alias);
-		return -1;
+		return (-1);
 	}
 
 	new_alias->next = *alias_list;
 	*alias_list = new_alias;
 
-	return 0;
+	return (0);
 }
 
 /**
@@ -73,9 +73,9 @@ char *find_alias(alias_t *alias_list, const char *name)
 	while (alias != NULL)
 	{
 		if (_strcmp(alias->name, name) == 0)
-			return alias->value;
+			return (alias->value);
 		alias = alias->next;
 	}
 
-	return NULL;
+	return (NULL);
 }
