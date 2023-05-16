@@ -1,77 +1,81 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "shell.h"
 
-#define MAX_ALIASES 100
-
-typedef struct
+/**
+ * print_alias - Print the aliases stored in the alias list
+ * @alias_list: The alias list
+ */
+void print_alias(alias_t *alias_list)
 {
-	char *name;
-	char *value;
-} Alias;
+    alias_t *alias;
 
-Alias aliases[MAX_ALIASES];
-int num_aliases = 0;
-
-void execute_builtin_command(char *command)
-{
-	if (strncmp(command, "alias", 5) == 0)
-       	{
-		char *arg = strtok(command, " ");
-		arg = strtok(NULL, " ");
-
-		if (arg == NULL)
-		{
-			print_aliases();
-		}
-		else 
-		{
-			char *name = strtok(arg, "=");
-			char *value = strtok(NULL, "=");
-
-			if (value == NULL)
-		       	{
-				print_alias(name);
-			}
-			else
-		       	{
-				define_alias(name, value);
-			}
-		}
-	}
+    alias = alias_list;
+    while (alias != NULL)
+    {
+        printf("%s='%s'\n", alias->name, alias->value);
+        alias = alias->next;
+    }
 }
 
-void define_alias(char *name, char *value)
+/**
+ * add_alias - Add an alias to the alias list
+ * @alias_list: The alias list
+ * @name: The name of the alias
+ * @value: The value of the alias
+ *
+ * Return: 0 on success, -1 on failure
+ */
+int add_alias(alias_t **alias_list, const char *name, const char *value)
 {
-	if (num_aliases >= MAX_ALIASES)
-       	{
-		fprintf(stderr, "Cannot define more aliases\n");
-		return;
-	}
+    alias_t *new_alias;
 
-	aliases[num_aliases].name = strdup(name);
-	aliases[num_aliases].value = strdup(value);
-	num_aliases++;
+    new_alias = malloc(sizeof(alias_t));
+    if (new_alias == NULL)
+    {
+        perror("malloc");
+        return -1;
+    }
+
+    new_alias->name = strdup(name);
+    if (new_alias->name == NULL)
+    {
+        perror("strdup");
+        free(new_alias);
+        return -1;
+    }
+
+    new_alias->value = strdup(value);
+    if (new_alias->value == NULL)
+    {
+        perror("strdup");
+        free(new_alias->name);
+        free(new_alias);
+        return -1;
+    }
+
+    new_alias->next = *alias_list;
+    *alias_list = new_alias;
+
+    return 0;
 }
 
-void print_aliases()
+/**
+ * find_alias - Find an alias in the alias list
+ * @alias_list: The alias list
+ * @name: The name of the alias to find
+ *
+ * Return: The value of the alias if found, NULL otherwise
+ */
+char *find_alias(alias_t *alias_list, const char *name)
 {
-	for (int i = 0; i < num_aliases; i++)
-       	{
-		printf("%s='%s'\n", aliases[i].name, aliases[i].value);
-	}
-}
+    alias_t *alias;
 
-void print_alias(char *name)
-{
-	for (int i = 0; i < num_aliases; i++)
-       	{
-		if (strcmp(aliases[i].name, name) == 0)
-	       	{
-			printf("%s='%s'\n", aliases[i].name, aliases[i].value);
-			return;
-		}
-	}
-	fprintf(stderr, "Alias '%s' not found\n", name);
+    alias = alias_list;
+    while (alias != NULL)
+    {
+        if (_strcmp(alias->name, name) == 0)
+            return alias->value;
+        alias = alias->next;
+    }
+
+    return NULL;
 }
