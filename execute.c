@@ -28,7 +28,7 @@ int is_builtin_command(char *command)
 
 
 /**
-* execute_builtin_command - supports the exit command 
+* execute_builtin_command - supports the exit command
 * for exiting the shell.
 * @command: param command to be executed.
 * Return: no return.
