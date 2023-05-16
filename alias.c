@@ -6,14 +6,14 @@
  */
 void print_alias(alias_t *alias_list)
 {
-    alias_t *alias;
+	alias_t *alias;
 
-    alias = alias_list;
-    while (alias != NULL)
-    {
-        printf("%s='%s'\n", alias->name, alias->value);
-        alias = alias->next;
-    }
+	alias = alias_list;
+	while (alias != NULL)
+	{
+		printf("%s='%s'\n", alias->name, alias->value);
+		alias = alias->next;
+	}
 }
 
 /**
@@ -26,36 +26,36 @@ void print_alias(alias_t *alias_list)
  */
 int add_alias(alias_t **alias_list, const char *name, const char *value)
 {
-    alias_t *new_alias;
+	alias_t *new_alias;
 
-    new_alias = malloc(sizeof(alias_t));
-    if (new_alias == NULL)
-    {
-        perror("malloc");
-        return -1;
-    }
+	new_alias = malloc(sizeof(alias_t));
+	if (new_alias == NULL)
+	{
+		perror("malloc");
+		return -1;
+	}
 
-    new_alias->name = strdup(name);
-    if (new_alias->name == NULL)
-    {
-        perror("strdup");
-        free(new_alias);
-        return -1;
-    }
+	new_alias->name = strdup(name);
+	if (new_alias->name == NULL)
+	{
+		perror("strdup");
+		free(new_alias);
+		return -1;
+	}
 
-    new_alias->value = strdup(value);
-    if (new_alias->value == NULL)
-    {
-        perror("strdup");
-        free(new_alias->name);
-        free(new_alias);
-        return -1;
-    }
+	new_alias->value = strdup(value);
+	if (new_alias->value == NULL)
+	{
+		perror("strdup");
+		free(new_alias->name);
+		free(new_alias);
+		return -1;
+	}
 
-    new_alias->next = *alias_list;
-    *alias_list = new_alias;
+	new_alias->next = *alias_list;
+	*alias_list = new_alias;
 
-    return 0;
+	return 0;
 }
 
 /**
@@ -67,15 +67,15 @@ int add_alias(alias_t **alias_list, const char *name, const char *value)
  */
 char *find_alias(alias_t *alias_list, const char *name)
 {
-    alias_t *alias;
+	alias_t *alias;
 
-    alias = alias_list;
-    while (alias != NULL)
-    {
-        if (_strcmp(alias->name, name) == 0)
-            return alias->value;
-        alias = alias->next;
-    }
+	alias = alias_list;
+	while (alias != NULL)
+	{
+		if (_strcmp(alias->name, name) == 0)
+			return alias->value;
+		alias = alias->next;
+	}
 
-    return NULL;
+	return NULL;
 }
