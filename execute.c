@@ -28,19 +28,11 @@ int is_builtin_command(char *command)
 
 
 /**
-<<<<<<< HEAD
  * execute_builtin_command - supports the exit command
  * for exiting the shell.
  * @command: param command to be executed.
  * Return: no return.
  */
-=======
-* execute_builtin_command - supports the exit command
-* for exiting the shell.
-* @command: param command to be executed.
-* Return: no return.
-*/
->>>>>>> ca7f515150bef9d757c78f519be06ab064daa2fd
 
 void execute_builtin_command(char *command)
 {
