@@ -4,11 +4,11 @@
 #include "shell.h"
 
 /**
- * getline - reads line and stores it in the buffer.
+ * get_input_line - reads line and stores it in the buffer.
  * Return: return -1 if error
  */
 
-char *getline(void)
+char *get_input_line(void)
 {
 	static char line[BUFFER_SIZE];
 	static int line_pos;

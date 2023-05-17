@@ -16,7 +16,7 @@ int main(void)
             break;
         }
 
-        line[strcspn(line, "\n")] = '\0'; // Remove trailing newline
+        line[strcspn(line, "\n")] = '\0'; /* Remove trailing newline */
 
         execute_command(line);
     }

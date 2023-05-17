@@ -72,7 +72,7 @@ char *find_alias(alias_t *alias_list, const char *name)
 	alias = alias_list;
 	while (alias != NULL)
 	{
-		if (strcmp(alias->name, name) == 0)
+		if (_strcmp(alias->name, name) == 0)
 			return (alias->value);
 		alias = alias->next;
 	}

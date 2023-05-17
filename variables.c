@@ -3,6 +3,7 @@
 #include <string.h>
 #include "shell.h"
 
+extern int exit_status;
 void execute_builtin_command(char *command)
 {
     if (command[0] == '$') {

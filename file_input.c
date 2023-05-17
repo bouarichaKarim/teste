@@ -12,6 +12,7 @@
 
 void execute_commands_from_file(const char *filename)
 {
+  char line[BUFFER_SIZE];
 	FILE *file = fopen(filename, "r");
 
 	if (file == NULL)
@@ -19,8 +20,6 @@ void execute_commands_from_file(const char *filename)
 		printf("Error opening file: %s\n", filename);
 		return;
 	}
-
-	char line[BUFFER_SIZE];
 
 	while (fgets(line, BUFFER_SIZE, file) != NULL)
 	{

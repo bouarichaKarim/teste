@@ -30,15 +30,15 @@ void execute_builtin_command(char *command)
         system("env");
 }
 
-char **parse_arguments(char *line)
+char **parse_arguments()
 {
-    // TODO: Implement argument parsing logic
-    // Example: Split the line into separate arguments based on spaces
-    // Return a dynamically allocated array of arguments
+ /*    TODO: Implement argument parsing logic  */
+  /*   Example: Split the line into separate arguments based on spaces  */
+  /*   Return a dynamically allocated array of arguments  */
     return NULL;
 }
 
-void free_arguments(char **arguments)
+void free_arguments()
 {
-    // TODO: Implement freeing of dynamically allocated arguments
+   /* TODO: Implement freeing of dynamically allocated arguments  */
 }
