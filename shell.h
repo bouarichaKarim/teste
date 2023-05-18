@@ -7,6 +7,7 @@
 #include <string.h>
 
 #define BUFFER_SIZE 1024
+extern int exit_status;
 
 /**
  * struct alias_s - Structure for storing alias information.
@@ -32,4 +33,5 @@ int is_builtin_command(char *command);
 void execute_builtin_command(char *command);
 char **parse_arguments(char *line);
 void free_arguments(char **arguments);
+char *create_command_path(char *command, char *directory);
 #endif

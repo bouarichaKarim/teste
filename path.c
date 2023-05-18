@@ -8,7 +8,7 @@
  * @command: param command.
  * Return: return string and NULL if not found.
  */
-char *create_command_path(char *command, char *directory);
+
 char *get_command_path(char *command)
 {
 	char *path_env = getenv("PATH");
