@@ -3,48 +3,61 @@
 #include <string.h>
 #include "shell.h"
 
+/**
+ * parse_arguments - Tokenizes a string into arguments.
+ * @line: The input string to be tokenized.
+ *
+ * Return: return an array of strings containing the arguments.
+ */
+
 char **parse_arguments(char *line)
 {
-    char **arguments = NULL;
-    char *buffer;
-    int arg_count = 0;
+	char **arguments = NULL;
+	char *buffer;
+	int arg_count = 0;
 
-    /* Create a copy of the line to avoid modifying the original string  */
-    buffer = strdup(line);
+	buffer = strdup(line);
+	arguments = malloc(sizeof(char *) * 2);
 
-    /* Allocate memory for the arguments array  */
-    arguments = malloc(sizeof(char *) * 2); /* Start with 2 arguments  */
+	char *token = strtok(buffer, " ");
 
-    /* Tokenize the line based on spaces  */
-    char *token = strtok(buffer, " ");
-    while (token != NULL) {
-        /* Allocate memory for each argument  */
-        arguments[arg_count] = malloc(strlen(token) + 1);
-        strcpy(arguments[arg_count], token);
-        arg_count++;
+	while (token != NULL)
+	{
+		arguments[arg_count] = malloc(strlen(token) + 1);
+		strcpy(arguments[arg_count], token);
+		arg_count++;
 
-        /* Resize the arguments array if needed  */
-        if (arg_count % 2 == 0) {
-            arguments = realloc(arguments, sizeof(char *) * (arg_count + 2));
-        }
+		if (arg_count % 2 == 0)
+		{
+			arguments = realloc(arguments, sizeof(char *) * (arg_count + 2));
+		}
 
-        token = strtok(NULL, " ");
-    }
+		token = strtok(NULL, " ");
+	}
 
-    /* Set the last argument to NULL  */
-    arguments[arg_count] = NULL;
+	arguments[arg_count] = NULL;
 
-    free(buffer);
+	free(buffer);
 
-    return arguments;
+	return (arguments);
 }
+
+/**
+ * free_arguments - Frees the memory allocated for
+ * an array of arguments.
+ * @arguments: The array of arguments to be freed.
+ * Return: no return.
+ */
+
 
 void free_arguments(char **arguments)
 {
-    int i = 0;
-    while (arguments[i] != NULL) {
-        free(arguments[i]);
-        i++;
-    }
-    free(arguments);
+	int i = 0;
+
+	while (arguments[i] != NULL)
+	{
+		free(arguments[i]);
+		i++;
+	}
+	free(arguments);
 }
