@@ -3,23 +3,28 @@
 #include <string.h>
 #include "shell.h"
 
-#define BUFFER_SIZE 1024
+/**
+ * main - Entry point for the shell program.
+ * Return: Always 0.
+ */
 
 int main(void)
 {
-    char line[BUFFER_SIZE];
+	char line[BUFFER_SIZE];
 
-    while (1) {
-        prompt();
-        if (fgets(line, BUFFER_SIZE, stdin) == NULL) {
-            printf("\n");
-            break;
-        }
+	while (1)
+	{
+		prompt();
+		if (fgets(line, BUFFER_SIZE, stdin) == NULL)
+		{
+			printf("\n");
+			break;
+		}
 
-        line[strcspn(line, "\n")] = '\0'; /* Remove trailing newline */
+		line[strcspn(line, "\n")] = '\0';
 
-        execute_command(line);
-    }
+		execute_command(line);
+	}
 
-    return 0;
+	return (0);
 }
