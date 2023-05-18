@@ -3,6 +3,12 @@
 #include <string.h>
 #include "shell.h"
 
+/**
+ * execute_command - Executes the setenv or unsetenv command.
+ * @command: param of command.
+ * Return: no return.
+ */
+
 void execute_command(char *command)
 {
 	if (strncmp(command, "setenv", 6) == 0)
