@@ -8,6 +8,13 @@
 
 #define BUFFER_SIZE 1024
 
+/**
+ * struct alias_s - Structure for storing alias information.
+ * @name: Name of the alias.
+ * @value: Value of the alias.
+ * @next: Pointer to the next alias in the linked list.
+ */
+
 typedef struct alias_s
 {
 	char *name;
