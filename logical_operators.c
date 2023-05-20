@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * execute_command - execute a single command within the shell.
+ * execute_command_logical_operators - execute a single command within the shell.
  * @command: param command.
  * Return: return exit status integer.
  */
