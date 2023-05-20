@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * execute_builtin_command - takes a command and performs
+ * execute_builtin_command_builtins - takes a command and performs
  * the corresponding action for the built-in command.
  * @command: param command.
  * Return: no return.
  */
 
 
-void execute_builtin_command(char *command)
+void execute_builtin_command_builtins(char *command)
 {
 	if (strcmp(command, "exit") == 0)
 	{
