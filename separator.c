@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * execute_command - execute single command.
+ * execute_command_separator - execute single command.
  * @command: command.
  * Return: return status of command.
  */
