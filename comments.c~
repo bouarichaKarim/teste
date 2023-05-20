@@ -10,7 +10,7 @@
  * Return: no return.
  */
 
-void execute_command(char *command)
+void execute_command_comments(char *command)
 {
 	if (command[0] == '#')
 		return;
