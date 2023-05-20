@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * execute_command - execute command, and handles both
+ * execute_command_comments - execute command, and handles both
  * regular commands and comments.
  * @command: param command line.
  * Return: no return.
