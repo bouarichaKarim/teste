@@ -48,6 +48,7 @@ char **parse_arguments(char *line)
 void free_arguments(char **arguments)
 {
 	int i = 0;
+	
 	while (arguments[i] != NULL)
 	{
 		free(arguments[i]);
