@@ -30,17 +30,7 @@ void execute_builtin_command(char *command)
 		system("env");
 }
 
-<<<<<<< HEAD
-char **parse_arguments()
-{
-	return (NULL);
-}
 
-void free_arguments()
-{
-
-}
-=======
 /**
 *char **parse_arguments()
 *{
@@ -52,4 +42,4 @@ void free_arguments()
 *   
 *}
 */
->>>>>>> 02aeb99b88e2ef10191894eff81b17227c14dc31
+
