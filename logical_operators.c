@@ -11,26 +11,32 @@
 
 void execute_command(char *command)
 {
-    char *and_operator = strstr(command, "&&");
-    char *or_operator = strstr(command, "||");
+    char *and_operator;
+    char *or_operator;
+    char *next_command;
+
+    and_operator = strstr(command, "&&");
+    or_operator = strstr(command, "||");
 
     if (and_operator != NULL)
     {
         *and_operator = '\0';
         execute_command(command);
 
-        char *next_command = and_operator + 2;
+        next_command = and_operator + 2;
 
         execute_command(next_command);
-    } else if (or_operator != NULL)
+    }
+    else if (or_operator != NULL)
     {
         *or_operator = '\0';
         execute_command(command);
 
-        char *next_command = or_operator + 2;
+        next_command = or_operator + 2;
 
         execute_command(next_command);
-    } else
+    }
+    else
     {
         if (is_builtin_command(command))
             execute_builtin_command(command);
