@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * execute_command_separator - execute single command.
+ * execute_command - execute single command.
  * @command: command.
  * Return: return status of command.
  */
 
-void execute_command_separator(char *command)
+void execute_command(char *command)
 {
 	char *separator = strchr(command, ';');
 
