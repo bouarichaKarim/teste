@@ -30,10 +30,7 @@ int add_alias(alias_t **alias_list, const char *name, const char *value);
 char *find_alias(alias_t *alias_list, const char *name);
 
 void prompt(void);
-void execute_command_comments(char *command);
-void execute_command_logical_operators(char *command);
-void execute_command_separator(char *command);
-void execute_command_setenv_unsetenv(char *command)
+void execute_command(char *command);
 int is_builtin_command(char *command);
 void execute_builtin_command_variables(char *command);
 void execute_builtin_command_builtins(char *command);
