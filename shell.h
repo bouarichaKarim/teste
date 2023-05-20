@@ -36,7 +36,7 @@ void execute_command_separator(char *command);
 void execute_command_setenv_unsetenv(char *command)
 int is_builtin_command(char *command);
 void execute_builtin_command_variables(char *command);
-void execute_builtin_command_(char *command);
+void execute_builtin_command_builtins(char *command);
 char **parse_arguments_tokenize(char *line);
 void free_arguments_tokenize(char **arguments);
 char **parse_arguments_arguments(char *line);
