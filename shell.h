@@ -8,6 +8,7 @@
 
 #define BUFFER_SIZE 1024
 extern int exit_status;
+extern char **environ;
 
 /**
  * struct alias_s - Structure for storing alias information.
