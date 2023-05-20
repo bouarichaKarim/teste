@@ -13,7 +13,7 @@ void execute_command(char *command)
 		return;
 
 	if (is_builtin_command(command))
-		execute_builtin_command_variables(command);
+		execute_builtin_command(command);
 	else
 		printf("Command not found: %s\n", command);
 }
