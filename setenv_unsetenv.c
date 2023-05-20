@@ -6,7 +6,7 @@
  * Return: no return.
  */
 
-void execute_command(char *command)
+void execute_command_setenv_unsetenv(char *command)
 {
 	if (strncmp(command, "setenv", 6) == 0)
 	{
