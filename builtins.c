@@ -9,7 +9,7 @@
  * the corresponding action for the built-in command.
  * @command: param command.
  * Return: no return.
- */
+ 
 
 void execute_builtin_command(char *command)
 {
@@ -28,3 +28,4 @@ void execute_builtin_command(char *command)
 		}
 	}
 }
+*/
