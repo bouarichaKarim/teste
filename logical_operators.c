@@ -5,7 +5,7 @@
  * @command: param command.
  * Return: return exit status integer.
  */
-void execute_command(char *command)
+void execute_command_logical_operators(char *command)
 {
 	char *and_operator = strstr(command, "&&");
 	char *or_operator = strstr(command, "||");
