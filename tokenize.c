@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * parse_arguments_tokenize - Tokenizes a string into arguments.
+ * parse_arguments - Tokenizes a string into arguments.
  * @line: The input string to be tokenized.
  *
  * Return: return an array of strings containing the arguments.
  */
 
-char **parse_arguments_tokenize(char *line)
+char **parse_arguments(char *line)
 {
 	char **arguments;
 	char *token;
@@ -47,10 +47,10 @@ char **parse_arguments_tokenize(char *line)
 }
 
 /**
- * free_arguments_tokenize - Free the memory used by an array of arguments.
+ * free_arguments - Free the memory used by an array of arguments.
  * @arguments: Array of arguments.
  */
-void free_arguments_tokenize(char **arguments)
+void free_arguments(char **arguments)
 {
 	int i;
 
