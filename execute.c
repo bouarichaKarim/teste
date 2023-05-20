@@ -2,18 +2,6 @@
 #include <stdlib.h>
 #include "shell.h"
 
-/**
- * execute_command - execute commands.
- * @command: param command to be executed.
- * Return: no return.
- */
-void execute_command(char *command)
-{
-	if (is_builtin_command(command))
-		execute_builtin_command(command);
-	else
-		printf("Command not found: %s\n", command);
-}
 
 /**
  * is_builtin_command - test if the command is builtin.
