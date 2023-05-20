@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * parse_arguments - takes the command line and parses it
+ * parse_arguments_arguments - takes the command line and parses it
  * into an array of arguments.
  * @line: command line.
  * Return: array of arguments.
  */
-char **parse_arguments(char *line)
+char **parse_arguments_arguments(char *line)
 {
 	char **arguments = NULL;
 	char *token;
@@ -36,12 +36,12 @@ char **parse_arguments(char *line)
 }
 
 /**
- * free_arguments - frees the memory allocated for
+ * free_arguments_arguments - frees the memory allocated for
  * the array of arguments.
  * @arguments: array of arguments.
  * Return: none.
  */
-void free_arguments(char **arguments)
+void free_arguments_arguments(char **arguments)
 {
 	int i = 0;
 
