@@ -38,6 +38,8 @@ int is_builtin_command(char *command);
 void execute_builtin_command(char *command);
 char **parse_arguments_tokenize(char *line);
 void free_arguments_tokenize(char **arguments);
+char **parse_arguments_arguments(char *line);
+void free_arguments_arguments(char **arguments);
 char *create_command_path(char *command, char *directory);
 char *get_command_path(char *command);
 void execute_commands_from_file(const char *filename);
