@@ -33,6 +33,7 @@ void prompt(void);
 void execute_command_comments(char *command);
 void execute_command_logical_operators(char *command);
 void execute_command_separator(char *command);
+void execute_command_setenv_unsetenv(char *command)
 int is_builtin_command(char *command);
 void execute_builtin_command(char *command);
 char **parse_arguments(char *line);
