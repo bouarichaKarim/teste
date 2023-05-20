@@ -30,12 +30,14 @@ void execute_builtin_command(char *command)
 		system("env");
 }
 
-char **parse_arguments()
-{
-    return (NULL);
-}
-
-void free_arguments()
-{
-   
-}
+/**
+*char **parse_arguments()
+*{
+*   return (NULL);
+*}
+*
+*void free_arguments()
+*{
+*   
+*}
+*/
