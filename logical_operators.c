@@ -23,7 +23,7 @@ void execute_command(char *command)
 		*and_operator = '\0';
 		execute_command(command);
 
-		char *next_command = and_operator + 2;
+		next_command = and_operator + 2;
 
 		execute_command(next_command);
 	} else if (or_operator != NULL)
@@ -31,7 +31,7 @@ void execute_command(char *command)
 		*or_operator = '\0';
 		execute_command(command);
 
-		char *next_command = or_operator + 2;
+		next_command = or_operator + 2;
 
 		execute_command(next_command);
 	} else
