@@ -6,7 +6,7 @@
  * Return: return status of command.
  */
 
-void execute_command(char *command)
+void execute_command_separator(char *command)
 {
 	char *separator = strchr(command, ';');
 
