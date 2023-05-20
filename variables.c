@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * execute_builtin_command_variables - Executes a built-in command.
+ * execute_builtin - Executes a built-in command.
  * @command: The command to execute.
  *
  * Return: No return.
  */
 
-void execute_builtin_command_variables(char *command)
+void execute_builtin(char *command)
 {
 	if (command[0] == '$')
 	{
