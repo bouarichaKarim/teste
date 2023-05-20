@@ -14,7 +14,7 @@ char *get_input_line(void)
 	static int line_pos;
 	static int line_len;
 	static int read_more = 1;
-	
+
 	char *cmd;
 
 	if (read_more)

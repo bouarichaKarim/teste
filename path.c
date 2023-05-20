@@ -14,7 +14,7 @@ char *get_command_path(char *command)
 	char *path_env;
 	char *path;
 	char *command_path;
-	
+
 	path_env = getenv("PATH");
 
 	if (path_env == NULL)

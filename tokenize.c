@@ -16,7 +16,6 @@ char **parse_arguments(char *line)
 	char *token;
 	int arg_count = 0;
 
-	/* Count the number of arguments */
 	token = strtok(line, " \t\n");
 	while (token != NULL)
 	{
@@ -24,15 +23,13 @@ char **parse_arguments(char *line)
 		token = strtok(NULL, " \t\n");
 	}
 
-	/* Allocate memory for arguments array */
 	arguments = malloc((arg_count + 1) * sizeof(char *));
 	if (arguments == NULL)
 	{
 		perror("Allocation error");
-		return NULL;
+		return (NULL);
 	}
 
-	/* Tokenize the command line into arguments */
 	token = strtok(line, " \t\n");
 	arg_count = 0;
 	while (token != NULL)
@@ -42,14 +39,14 @@ char **parse_arguments(char *line)
 		{
 			perror("Allocation error");
 			free_arguments(arguments);
-			return NULL;
+			return (NULL);
 		}
 		arg_count++;
 		token = strtok(NULL, " \t\n");
 	}
 
 	arguments[arg_count] = NULL;
-	return arguments;
+	return (arguments);
 }
 
 /**
@@ -59,10 +56,11 @@ char **parse_arguments(char *line)
 void free_arguments(char **arguments)
 {
 	int i;
+
 	if (arguments == NULL)
 		return;
 
-	for ( i = 0; arguments[i] != NULL; i++)
+	for (i = 0; arguments[i] != NULL; i++)
 		free(arguments[i]);
 
 	free(arguments);
