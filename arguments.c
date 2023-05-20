@@ -21,8 +21,7 @@ char **parse_arguments(char *line)
 	token = strtok(line, " ");
 	while (token != NULL)
 	{
-		arguments[arg_count] = malloc(strlen(token) + 1);
-		strcpy(arguments[arg_count], token);
+		arguments[arg_count] = strdup(token);
 		arg_count++;
 
 		if (arg_count >= arg_size)
