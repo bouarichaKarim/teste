@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * execute_command_logical_operators - execute a single command within the shell.
+ * execute_command - execute a single command within the shell.
  * @command: param command.
  * Return: return exit status integer.
  */
-void execute_command_logical_operators(char *command)
+void execute_command(char *command)
 {
 	char *and_operator = strstr(command, "&&");
 	char *or_operator = strstr(command, "||");
