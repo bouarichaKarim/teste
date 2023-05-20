@@ -12,52 +12,57 @@
 
 char **parse_arguments(char *line)
 {
-	char **arguments = NULL;
-	char *buffer;
+	char **arguments;
+	char *token;
 	int arg_count = 0;
 
-	buffer = strdup(line);
-	arguments = malloc(sizeof(char *) * 2);
-
-	char *token = strtok(buffer, " ");
-
+	/* Count the number of arguments */
+	token = strtok(line, " \t\n");
 	while (token != NULL)
 	{
-		arguments[arg_count] = malloc(strlen(token) + 1);
-		strcpy(arguments[arg_count], token);
 		arg_count++;
+		token = strtok(NULL, " \t\n");
+	}
 
-		if (arg_count % 2 == 0)
+	/* Allocate memory for arguments array */
+	arguments = malloc((arg_count + 1) * sizeof(char *));
+	if (arguments == NULL)
+	{
+		perror("Allocation error");
+		return NULL;
+	}
+
+	/* Tokenize the command line into arguments */
+	token = strtok(line, " \t\n");
+	arg_count = 0;
+	while (token != NULL)
+	{
+		arguments[arg_count] = strdup(token);
+		if (arguments[arg_count] == NULL)
 		{
-			arguments = realloc(arguments, sizeof(char *) * (arg_count + 2));
+			perror("Allocation error");
+			free_arguments(arguments);
+			return NULL;
 		}
-
-		token = strtok(NULL, " ");
+		arg_count++;
+		token = strtok(NULL, " \t\n");
 	}
 
 	arguments[arg_count] = NULL;
-
-	free(buffer);
-
-	return (arguments);
+	return arguments;
 }
 
 /**
- * free_arguments - Frees the memory allocated for
- * an array of arguments.
- * @arguments: The array of arguments to be freed.
- * Return: no return.
+ * free_arguments - Free the memory used by an array of arguments.
+ * @arguments: Array of arguments.
  */
-
-
 void free_arguments(char **arguments)
 {
-	int i = 0;
+	if (arguments == NULL)
+		return;
 
-	while (arguments[i] != NULL)
-	{
+	for (int i = 0; arguments[i] != NULL; i++)
 		free(arguments[i]);
-		i++;
-	}
+
 	free(arguments);
 }
