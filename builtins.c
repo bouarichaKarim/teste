@@ -8,7 +8,7 @@
  */
 
 
-void execute_builtin_command_builtins(char *command)
+void execute_builtin_command(char *command)
 {
 	if (strcmp(command, "exit") == 0)
 	{
