@@ -32,10 +32,10 @@ void execute_builtin_command(char *command)
 
 char **parse_arguments()
 {
-    return (NULL);
+	return (NULL);
 }
 
 void free_arguments()
 {
-   
+
 }

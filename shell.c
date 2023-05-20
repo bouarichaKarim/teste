@@ -8,7 +8,7 @@
 int main(void)
 {
 	char line[BUFFER_SIZE];
-	
+
 	exit_status = 0;
 
 	while (1)
