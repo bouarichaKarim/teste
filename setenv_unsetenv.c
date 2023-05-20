@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * execute_command - Executes the setenv or unsetenv command.
+ * execute_command_setenv_unsetenv - Executes the setenv or unsetenv command.
  * @command: param of command.
  * Return: no return.
  */
