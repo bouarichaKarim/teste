@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "shell.h"
 
 /**
@@ -14,6 +11,8 @@ char *get_input_line(void)
 	static int line_pos;
 	static int line_len;
 	static int read_more = 1;
+
+	char *cmd;
 
 	if (read_more)
 	{
@@ -32,7 +31,7 @@ char *get_input_line(void)
 		return (line);
 	}
 
-	char *cmd = &line[line_pos];
+	cmd = &line[line_pos];
 
 	line_pos++;
 	return (cmd);

@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "shell.h"
 
 /**
@@ -12,7 +9,7 @@
 
 void execute_commands_from_file(const char *filename)
 {
-  char line[BUFFER_SIZE];
+	char line[BUFFER_SIZE];
 	FILE *file = fopen(filename, "r");
 
 	if (file == NULL)

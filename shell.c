@@ -1,25 +1,29 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "shell.h"
 
-#define BUFFER_SIZE 1024
+/**
+ * main - Entry point for the shell program.
+ * Return: Always 0.
+ */
 
 int main(void)
 {
-    char line[BUFFER_SIZE];
+	char line[BUFFER_SIZE];
 
-    while (1) {
-        prompt();
-        if (fgets(line, BUFFER_SIZE, stdin) == NULL) {
-            printf("\n");
-            break;
-        }
+	exit_status = 0;
 
-        line[strcspn(line, "\n")] = '\0'; /* Remove trailing newline */
+	while (1)
+	{
+		prompt();
+		if (fgets(line, BUFFER_SIZE, stdin) == NULL)
+		{
+			printf("\n");
+			break;
+		}
 
-        execute_command(line);
-    }
+		line[strcspn(line, "\n")] = '\0';
 
-    return 0;
+		execute_command(line);
+	}
+
+	return (0);
 }

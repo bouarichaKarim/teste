@@ -1,7 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "shell.h"
+
+/**
+ * execute_command - Executes the setenv or unsetenv command.
+ * @command: param of command.
+ * Return: no return.
+ */
 
 void execute_command(char *command)
 {

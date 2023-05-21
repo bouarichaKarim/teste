@@ -5,8 +5,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #define BUFFER_SIZE 1024
+extern int exit_status;
+extern char **environ;
+
+/**
+ * struct alias_s - Structure for storing alias information.
+ * @name: Name of the alias.
+ * @value: Value of the alias.
+ * @next: Pointer to the next alias in the linked list.
+ */
 
 typedef struct alias_s
 {
@@ -25,4 +35,8 @@ int is_builtin_command(char *command);
 void execute_builtin_command(char *command);
 char **parse_arguments(char *line);
 void free_arguments(char **arguments);
+char *create_command_path(char *command, char *directory);
+char *get_command_path(char *command);
+void execute_commands_from_file(const char *filename);
+char *get_input_line(void);
 #endif

@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "shell.h"
 
 /**
@@ -8,10 +5,14 @@
  * @command: param command.
  * Return: return string and NULL if not found.
  */
-char *create_command_path(char *command, char *directory);
+
 char *get_command_path(char *command)
 {
-	char *path_env = getenv("PATH");
+	char *path_env;
+	char *path;
+	char *command_path;
+
+	path_env = getenv("PATH");
 
 	if (path_env == NULL)
 	{
@@ -19,11 +20,11 @@ char *get_command_path(char *command)
 		return (NULL);
 	}
 
-	char *path = strtok(path_env, ":");
+	path = strtok(path_env, ":");
 
 	while (path != NULL)
 	{
-		char *command_path = create_command_path(command, path);
+		command_path = create_command_path(command, path);
 
 		if (command_path != NULL && access(command_path, F_OK) == 0)
 		{

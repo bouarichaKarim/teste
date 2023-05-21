@@ -1,7 +1,3 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "shell.h"
 
 /**
@@ -10,6 +6,7 @@
  * @command: param command.
  * Return: no return.
  */
+
 
 void execute_builtin_command(char *command)
 {

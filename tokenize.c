@@ -1,50 +1,64 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "shell.h"
+
+/**
+ * parse_arguments - Tokenizes a string into arguments.
+ * @line: The input string to be tokenized.
+ *
+ * Return: return an array of strings containing the arguments.
+ */
 
 char **parse_arguments(char *line)
 {
-    char **arguments = NULL;
-    char *buffer;
-    int arg_count = 0;
+	char **arguments;
+	char *token;
+	int arg_count = 0;
 
-    /* Create a copy of the line to avoid modifying the original string  */
-    buffer = strdup(line);
+	token = strtok(line, " \t\n");
+	while (token != NULL)
+	{
+		arg_count++;
+		token = strtok(NULL, " \t\n");
+	}
 
-    /* Allocate memory for the arguments array  */
-    arguments = malloc(sizeof(char *) * 2); /* Start with 2 arguments  */
+	arguments = malloc((arg_count + 1) * sizeof(char *));
+	if (arguments == NULL)
+	{
+		perror("Allocation error");
+		return (NULL);
+	}
 
-    /* Tokenize the line based on spaces  */
-    char *token = strtok(buffer, " ");
-    while (token != NULL) {
-        /* Allocate memory for each argument  */
-        arguments[arg_count] = malloc(strlen(token) + 1);
-        strcpy(arguments[arg_count], token);
-        arg_count++;
+	token = strtok(line, " \t\n");
+	arg_count = 0;
+	while (token != NULL)
+	{
+		arguments[arg_count] = strdup(token);
+		if (arguments[arg_count] == NULL)
+		{
+			perror("Allocation error");
+			free_arguments(arguments);
+			return (NULL);
+		}
+		arg_count++;
+		token = strtok(NULL, " \t\n");
+	}
 
-        /* Resize the arguments array if needed  */
-        if (arg_count % 2 == 0) {
-            arguments = realloc(arguments, sizeof(char *) * (arg_count + 2));
-        }
-
-        token = strtok(NULL, " ");
-    }
-
-    /* Set the last argument to NULL  */
-    arguments[arg_count] = NULL;
-
-    free(buffer);
-
-    return arguments;
+	arguments[arg_count] = NULL;
+	return (arguments);
 }
 
+/**
+ * free_arguments - Free the memory used by an array of arguments.
+ * @arguments: Array of arguments.
+ */
 void free_arguments(char **arguments)
 {
-    int i = 0;
-    while (arguments[i] != NULL) {
-        free(arguments[i]);
-        i++;
-    }
-    free(arguments);
+	int i;
+
+	if (arguments == NULL)
+		return;
+
+	for (i = 0; arguments[i] != NULL; i++)
+		free(arguments[i]);
+
+	free(arguments);
 }
